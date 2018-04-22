@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  python-app:
-    image: python-app:snapshot
+  python-web-app:
+    image: python-web-app:snapshot
     ports:
       - 5000:5000
