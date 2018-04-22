@@ -4,7 +4,7 @@ Sidecar is an application that runs next to the other application on the same ho
 by the application that is organized into microservices that use different programming languages.
 
 Benefits:
-- sidecar is separated so it is easier to maintain it
+- sidecar is separated so it is easier to maintain
 - sidecar is isolated so main app doesn't now anything about it
 - sidecar provides isolation and encapsulation
 
@@ -20,7 +20,7 @@ it each application is docerized and executed with additional application that p
 +----------------+      +----------------+
 ```
 
-Python and java application is exchanging some data through REST api. Thanks to the statistics-app we can measure performance of the app.
+Python and java application exchange some data through REST api. Thanks to the statistics-app we can measure performance of the app.
 
 # Links
 - https://docs.microsoft.com/pl-pl/azure/architecture/patterns/sidecar
