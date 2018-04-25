@@ -16,10 +16,10 @@ As I don't know python well I want to use java to implement service discovery.
 - python uses sidecar application written in java application
 
 ```
-+--Docker 1---------------------+      +--Docker 2 -----+
-| Python app                    | <--> | Java pp        |
-| Sidecar-service-discovery app |      |                |
-+-------------------------------+      +----------------+
++--Docker 1---------------------+                         +--Docker 2 -----+
+| Python app                    | <--> Eureka server <--> | Java app       |
+| Sidecar-service-discovery app |                         |                |
++-------------------------------+                         +----------------+
 ```
 
 # Links
