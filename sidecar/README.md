@@ -1,7 +1,7 @@
 # Definition
 
-Sidecar is an application that runs next to the other application on the same host, as new process and provides some information about the main app like statistics, etc. Should be used 
-by the application that is organized into microservices that use different programming languages.
+Sidecar is an application that runs next to the other application on the same host, as new process and extends functionality of th the main app. The example may be 
+application statistics, service discovery, logging. Mostly used by the application that is organized into microservices and is implemented in several programming languages.
 
 Benefits:
 - sidecar is separated so it is easier to maintain
@@ -10,19 +10,19 @@ Benefits:
 
 # Example
 
-Application is divided into two microservices. One is written in Python and the other in Java. We want to have statistics stored for each of the microservices. To achieve 
-it each application is docerized and executed with additional application that provides application statistics.
+Application is divided into two microservices. One is written in Python and the other in Java. We want to register each of the applications in Eureka (service discovery).
+- java application has build in service discovery client
+- python uses sidecar application written in java application
 
 ```
-+--Docker 1------+      +--Docker 2 -----+
-| Python app     | <--> | Java pp        |
-| Statistics app |      | Statistics app |
-+----------------+      +----------------+
++--Docker 1---------------------+      +--Docker 2 -----+
+| Python app                    | <--> | Java pp        |
+| Sidecar-service-discovery app |      |                |
++-------------------------------+      +----------------+
 ```
-
-Python and java application exchange some data through REST api. Thanks to the statistics-app we can measure performance of the app.
 
 # Links
 - https://docs.microsoft.com/pl-pl/azure/architecture/patterns/sidecar
 - https://getpocket.com/a/read/1812100957
 - http://projects.spring.io/spring-cloud/spring-cloud.html#_polyglot_support_with_sidecar
+- http://ispyker.blogspot.co.uk/2014/08/a-netflixoss-sidecar-in-support-of-non.html
