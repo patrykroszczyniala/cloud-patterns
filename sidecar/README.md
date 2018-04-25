@@ -1,7 +1,7 @@
 # Definition
 
-Sidecar is an application that runs next to the other application on the same host, as new process and extends functionality of th the main app. The example may be 
-application statistics, service discovery, logging. Mostly used by the application that is organized into microservices and is implemented in several programming languages.
+Sidecar is an application that runs next to the other application on the same host, as new process and extends functionality of the the main app. The example may be 
+application statistics, service discovery, logging. Mostly used by the application that is organized into microservices and implemented in several programming languages.
 
 Benefits:
 - sidecar is separated so it is easier to maintain
@@ -11,7 +11,8 @@ Benefits:
 # Example
 
 Application is divided into two microservices. One is written in Python and the other in Java. We want to register each of the applications in Eureka (service discovery).
-- java application has build in service discovery client
+As I don't know python well I want to use java to implement service discovery.
+- java application has built in service discovery client
 - python uses sidecar application written in java application
 
 ```
