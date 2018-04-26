@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  eureka:
+    image: netflixoss/eureka:1.3.1
+    ports:
+      - 4444:8080
+    environment:
+      - EUREKA_INSTANCE_HOSTNAME=localhost
+      - EUREKA_CLIENT_FETCHREGISTRY=false
+      - EUREKA_CLIENT_REGISTERWITHEUREKA=false
+
+  java-web-app:
+    image: java-web-app:snapshot
+    depends_on:
+      - eureka
+    environment:
+      - SPRING_APPLICATION_NAME=java-app
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8080/eureka/v2/
+    ports:
+      - 5001:5001
+
+  python-web-app:
+    image: python-web-app:snapshot
+    ports:
+      - 5000:5000
+
+  sidecar-app:
+    image: sidecar-app:snapshot
+    depends_on: 
+      - eureka
+      - python-web-app
+    environment:
+      - SERVER_PORT=5678
+      - SPRING_APPLICATION_NAME=sidecar-app
+      - SIDECAR_PORT=5000
+      - SIDECAR_HEALTH_URI=http://python-web-app:5000/health
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8080/eureka/v2/
+    ports:
+      - 5678:5678
