@@ -16,11 +16,12 @@ As I don't know python well I want to use java to implement service discovery.
 - python uses sidecar application written in java application
 
 ```
-+--Docker 1---------------------+                         +--Docker 2 -----+
-| Python app                    | <--> Eureka server <--> | Java app       |
-| Sidecar-service-discovery app |                         |                |
-+-------------------------------+                         +----------------+
++--Docker 1------+      +--Docker 2---------------------------------------+                         +--Docker 2------+
+| Python app     | <--> | Sidecar app that registers python app in eureka | <--> Eureka server <--> | Java app       |
++----------------+      +-------------------------------------------------+                         +----------------+
 ```
+
+As you see sidecar app is not on the same host as python app. That's becase docker container should have one process started (https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#each-container-should-have-only-one-concern).
 
 # Links
 - https://docs.microsoft.com/pl-pl/azure/architecture/patterns/sidecar

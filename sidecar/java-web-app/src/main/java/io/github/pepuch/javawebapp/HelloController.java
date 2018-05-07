@@ -14,7 +14,7 @@ public class HelloController {
 
     @GetMapping
     public String hello() {
-        final String pythonAppResponse = restTemplate.getForObject("http://sidecar-app/hello", String.class);
+        final String pythonAppResponse = restTemplate.getForObject("/hello", String.class);
         return "Response from python app: " + pythonAppResponse;
     }
 

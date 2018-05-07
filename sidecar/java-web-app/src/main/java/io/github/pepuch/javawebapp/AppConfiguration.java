@@ -12,6 +12,6 @@ public class AppConfiguration {
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
-        return new RestTemplateBuilder().setReadTimeout(1000).build();
+        return new RestTemplateBuilder().rootUri("http://SIDECAR-APP").build();
     }
 }
